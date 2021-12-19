@@ -15,6 +15,8 @@ typedef struct s_data
 	int	fdin;
 	int	fdout;
 	int	pipefd[2];
+	char	**cmd;
+	char	*path;
 
 }	t_data;
 
@@ -22,5 +24,8 @@ char	**ft_split(char const *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *s);
 char	**get_cmd(char *s);
+char	*get_path(t_data *data, char **env);
+char	*my_path_join(char const *s1, char const *s2);
+void	free_split(char **s);
 
 #endif

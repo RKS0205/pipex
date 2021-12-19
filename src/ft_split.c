@@ -1,4 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rkenji-s <rkenji-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/19 19:21:19 by rkenji-s          #+#    #+#             */
+/*   Updated: 2021/12/19 19:21:19 by rkenji-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../pipex.h"
+
+void	free_split(char **s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != NULL)
+		free(s[i++]);
+	free(s);
+}
 
 static int	my_count(char *s, char c)
 {
@@ -12,7 +34,7 @@ static int	my_count(char *s, char c)
 		if (s[n] != c && (s[n + 1] == c || s[n + 1] == '\0'))
 			count++;
 		n++;
- 	}
+	}
 	return (count);
 }
 
