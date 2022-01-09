@@ -6,7 +6,7 @@
 /*   By: rkenji-s <rkenji-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 19:21:33 by rkenji-s          #+#    #+#             */
-/*   Updated: 2021/12/19 19:21:34 by rkenji-s         ###   ########.fr       */
+/*   Updated: 2022/01/08 18:56:14 by rkenji-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_args(int argc, char **argv)
 {
 	if (argc != 5)
 	{
-		write (STDERR, "Invalid number of arguments", 27);
+		write (STDERR, "Invalid number of arguments\n", 28);
 		exit(1);
 	}
 	if (argv[1][0] == '\0' || argv[2][0] == '\0' ||
@@ -79,9 +79,4 @@ int	main(int argc, char **argv, char **env)
 		first_command(data, argv, env);
 	else
 		second_command(data, argv, env);
-	close(data->fdin);
-	close(data->fdout);
-	close(data->pipefd[0]);
-	close(data->pipefd[1]);
-	exit (0);
 }
