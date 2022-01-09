@@ -6,7 +6,7 @@
 /*   By: rkenji-s <rkenji-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 23:13:34 by rkenji-s          #+#    #+#             */
-/*   Updated: 2022/01/09 16:12:56 by rkenji-s         ###   ########.fr       */
+/*   Updated: 2022/01/09 16:48:26 by rkenji-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ void	here_doc_open(char **argv, t_data *data, int argc)
 		data->fdout = open(argv[argc - 1], O_CREAT | O_WRONLY | O_APPEND, 0644);
 	else
 		data->fdout = open(argv[argc - 1], O_WRONLY | O_APPEND);
+	if (access(".here_doc", F_OK))
+		unlink(".here_doc");
 	fd = open(".here_doc", O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	while (1)
 	{
 		line = get_next_line(STDIN);
-		if (ft_strncmp(line, argv[2], ft_strlen(argv[2]) != 0))
+		if (str_check(line, argv[2]) == 0)
 			write (fd, line, ft_strlen(line));
 		else
 		{
@@ -106,7 +108,7 @@ int	main(int argc, char **argv, char **env)
 	check_args(argc, argv);
 	data = (t_data *) malloc (sizeof(t_data));
 	count = 2;
-	if (ft_strncmp("here_doc", argv[1], 9) == 0 && count++)
+	if (str_check(argv[1], "here_doc") == 1 && count++)
 		here_doc_open(argv, data, argc);
 	else
 		open_files(argv, data, argc);
