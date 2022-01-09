@@ -24,9 +24,9 @@
 
 typedef struct s_data
 {
-	int	fdin;
-	int	fdout;
-	int	pipefd[2];
+	int		fdin;
+	int		fdout;
+	int		pipefd[2];
 	char	**cmd;
 	char	*path;
 

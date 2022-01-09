@@ -6,7 +6,7 @@
 /*   By: rkenji-s <rkenji-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 23:14:47 by rkenji-s          #+#    #+#             */
-/*   Updated: 2021/12/19 23:14:48 by rkenji-s         ###   ########.fr       */
+/*   Updated: 2022/01/09 16:11:56 by rkenji-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 
 typedef struct s_data
 {
-	int	fdin;
-	int	fdout;
-	int	pipefd[2];
+	int		fdin;
+	int		fdout;
+	int		pipefd[2];
 	char	**cmd;
 	char	*path;
 
