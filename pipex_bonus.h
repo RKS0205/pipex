@@ -43,5 +43,6 @@ int		str_check(const char *s1, const char *s2);
 char	*ft_gnl_strjoin(char *s1, char *s2);
 char	*ft_strchr(const char *s, int c);
 char	*get_next_line(int fd);
+void	exec_error(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rkenji-s <rkenji-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 23:13:34 by rkenji-s          #+#    #+#             */
-/*   Updated: 2022/01/09 16:48:26 by rkenji-s         ###   ########.fr       */
+/*   Updated: 2022/01/15 17:14:25 by rkenji-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	check_args(int argc, char **argv)
 	{
 		if (argv[i++][0] == '\0')
 		{
-			write (STDERR, "Empty string\n", 13);
+			write (STDERR, "Invalid argument\n", 17);
 			exit(1);
 		}
 	}
@@ -54,6 +54,7 @@ void	here_doc_open(char **argv, t_data *data, int argc)
 			free (line);
 			close(fd);
 			data->fdin = open(".here_doc", O_RDONLY);
+			unlink(".here_doc");
 			return ;
 		}
 		free(line);
@@ -91,6 +92,7 @@ void	cmd_loop(t_data *data, char **argv, char **env, int count)
 		data->cmd = get_cmd(argv[count]);
 		data->path = get_path(data, env);
 		execve(data->path, data->cmd, env);
+		exec_error(data);
 	}
 	else
 	{
@@ -112,19 +114,12 @@ int	main(int argc, char **argv, char **env)
 		here_doc_open(argv, data, argc);
 	else
 		open_files(argv, data, argc);
-	if (fork() == 0)
-	{
-		dup2(data->fdout, STDOUT);
-		dup2(data->fdin, STDIN);
-		while (count < argc - 2)
-			cmd_loop(data, argv, env, count++);
-		data->cmd = get_cmd(argv[count]);
-		data->path = get_path(data, env);
-		execve(data->path, data->cmd, env);
-	}
-	wait(NULL);
-	close(data->fdin);
-	close(data->fdout);
-	free(data);
-	unlink(".here_doc");
+	dup2(data->fdout, STDOUT);
+	dup2(data->fdin, STDIN);
+	while (count < argc - 2)
+		cmd_loop(data, argv, env, count++);
+	data->cmd = get_cmd(argv[count]);
+	data->path = get_path(data, env);
+	execve(data->path, data->cmd, env);
+	exec_error(data);
 }

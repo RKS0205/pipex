@@ -1,5 +1,6 @@
-SRC_FILES= pipex.c ft_split.c ft_substr.c ft_strlen.c get_cmd.c get_path.c
-SRC_B_FILES= pipex_bonus.c ft_split_bonus.c ft_substr_bonus.c ft_strlen_bonus.c get_cmd_bonus.c get_path_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c str_check_bonus.c
+SRC_FILES= pipex.c ft_split.c ft_substr.c ft_strlen.c get_cmd.c get_path.c exec_error.c
+SRC_B_FILES= pipex_bonus.c ft_split_bonus.c ft_substr_bonus.c ft_strlen_bonus.c get_cmd_bonus.c get_path_bonus.c \
+			get_next_line_bonus.c get_next_line_utils_bonus.c str_check_bonus.c exec_error.c
 SRC=$(addprefix src/, $(SRC_FILES))
 SRC_B=$(addprefix src_bonus/, $(SRC_B_FILES))
 OBJ=$(addprefix obj/, $(SRC_FILES:.c=.o))

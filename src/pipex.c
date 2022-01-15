@@ -6,7 +6,7 @@
 /*   By: rkenji-s <rkenji-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 19:21:33 by rkenji-s          #+#    #+#             */
-/*   Updated: 2022/01/08 18:56:14 by rkenji-s         ###   ########.fr       */
+/*   Updated: 2022/01/15 17:14:11 by rkenji-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	check_args(int argc, char **argv)
 	if (argv[1][0] == '\0' || argv[2][0] == '\0' ||
 			argv[3][0] == '\0' || argv[4][0] == '\0')
 	{
-		write (STDERR, "Empty string\n", 13);
+		write (STDERR, "Invalid argument\n", 17);
 		exit(1);
 	}
 }
@@ -51,6 +51,7 @@ void	first_command(t_data *data, char **argv, char **env)
 	data->cmd = get_cmd(argv[2]);
 	data->path = get_path(data, env);
 	execve(data->path, data->cmd, env);
+	exec_error(data);
 }
 
 void	second_command(t_data *data, char **argv, char **env)
@@ -60,6 +61,7 @@ void	second_command(t_data *data, char **argv, char **env)
 	data->cmd = get_cmd(argv[3]);
 	data->path = get_path(data, env);
 	execve(data->path, data->cmd, env);
+	exec_error(data);
 }
 
 int	main(int argc, char **argv, char **env)

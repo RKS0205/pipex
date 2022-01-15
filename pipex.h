@@ -6,7 +6,7 @@
 /*   By: rkenji-s <rkenji-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 23:14:47 by rkenji-s          #+#    #+#             */
-/*   Updated: 2022/01/09 16:11:56 by rkenji-s         ###   ########.fr       */
+/*   Updated: 2022/01/15 17:11:22 by rkenji-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ char	**get_cmd(char *s);
 char	*get_path(t_data *data, char **env);
 char	*my_path_join(char const *s1, char const *s2);
 void	free_split(char **s);
+void	exec_error(t_data *data);
 
 #endif
