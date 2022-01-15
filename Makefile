@@ -23,6 +23,7 @@ obj_bonus/%.o: src_bonus/%.c
 
 clean:
 	rm -rf $(OBJ)
+	rm -rf $(OBJ_B)
 
 fclean: clean
 	rm -rf $(NAME)
