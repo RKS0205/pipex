@@ -16,7 +16,6 @@
 # define STDOUT 1
 # define STDERR 2
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/wait.h>

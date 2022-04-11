@@ -6,7 +6,7 @@
 /*   By: rkenji-s <rkenji-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 23:13:34 by rkenji-s          #+#    #+#             */
-/*   Updated: 2022/01/15 17:14:25 by rkenji-s         ###   ########.fr       */
+/*   Updated: 2022/01/20 19:13:16 by rkenji-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	open_files(char **argv, t_data *data, int argc)
 		write (STDERR, argv[1], ft_strlen(argv[1]));
 		write (STDERR, ": No such file or directory\n", 28);
 		free(data);
-		exit(1);
+		exit(0);
 	}
 	else
 		data->fdin = open(argv[1], O_RDONLY);

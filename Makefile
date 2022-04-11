@@ -4,22 +4,30 @@ SRC_B_FILES= pipex_bonus.c ft_split_bonus.c ft_substr_bonus.c ft_strlen_bonus.c 
 SRC=$(addprefix src/, $(SRC_FILES))
 SRC_B=$(addprefix src_bonus/, $(SRC_B_FILES))
 OBJ=$(addprefix obj/, $(SRC_FILES:.c=.o))
+OBJ_DIR=obj
 OBJ_B=$(addprefix obj_bonus/, $(SRC_B_FILES:.c=.o))
+OBJ_B_DIR=obj_bonus
 NAME=pipex
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ_DIR) $(OBJ)
 	gcc -Wall -Werror -Wextra $(OBJ) -o $(NAME)
 
-bonus: $(OBJ_B)
-	gcc -Wall -Werror -Wextra $(OBJ_B) -o $(NAME)
+bonus: $(OBJ_B_DIR) $(OBJ_B)
+	make OBJ="$(OBJ_B)" all
 
 obj/%.o: src/%.c
 	gcc -Wall -Werror -Wextra -c $< -o $@
 
 obj_bonus/%.o: src_bonus/%.c
 	gcc -Wall -Werror -Wextra -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir $(OBJ_DIR)
+
+$(OBJ_B_DIR):
+	mkdir $(OBJ_B_DIR)
 
 clean:
 	rm -rf $(OBJ)

@@ -27,7 +27,7 @@ static char	*read_loop(int fd, char *buff, char *str)
 			return (NULL);
 		}
 		buff[size] = '\0';
-		str = ft_gnl_strjoin(str, buff);
+		str = ft_my_strjoin(str, buff);
 	}
 	return (str);
 }

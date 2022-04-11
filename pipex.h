@@ -6,7 +6,7 @@
 /*   By: rkenji-s <rkenji-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 23:14:47 by rkenji-s          #+#    #+#             */
-/*   Updated: 2022/01/15 17:11:22 by rkenji-s         ###   ########.fr       */
+/*   Updated: 2022/01/20 19:04:13 by rkenji-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # define STDOUT 1
 # define STDERR 2
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/wait.h>
