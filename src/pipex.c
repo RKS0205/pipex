@@ -38,7 +38,7 @@ void	open_files(char **argv, t_data *data)
 		write (STDERR, argv[1], ft_strlen(argv[1]));
 		write (STDERR, ": No such file or directory\n", 28);
 		free(data);
-		exit(0);
+		exit(1);
 	}
 	else
 		data->fdin = open(argv[1], O_RDONLY);
